@@ -1,0 +1,6 @@
+Model
+Controller
+Routes
+
+
+Schema -> Model -> Controller(Service, Repositery, Controller)
