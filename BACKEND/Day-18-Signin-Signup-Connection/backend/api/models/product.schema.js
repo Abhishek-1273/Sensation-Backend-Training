@@ -1,0 +1,93 @@
+import mongoose from "mongoose";
+import { randomUUID } from "crypto";
+
+const productSchema = new mongoose.Schema(
+    {
+        uuid: {
+            type: String,
+            default: () => randomUUID(),
+            unique: true,
+            index: true,
+        },
+        company: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Organization",
+            required: true,
+            index: true,
+        },
+        createdBy: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Auth",
+        },
+
+        //  basic info:
+        productName: {
+            type: String,
+            required: true,
+            trim: true,
+        },
+        productCode: String,
+        description: String,
+
+        productType: {
+            type: String,
+            enum: [
+                "drug",
+                "medical_device",
+                "software",
+                "ai_system",
+                "diagonistic",
+                "other",
+            ],
+        },
+        images: [
+            {
+                url: String,
+                publicId: String,
+            },
+        ],
+        //  regulatory:
+        regulatory: {
+            deviceClass: String,
+            riskCategory: {
+                type: String,
+                enum: ["low", "medium", "high", "critical"],
+            },
+            intendedUse: String,
+            market: [String],
+            approvals: [
+                {
+                    authority: String,
+                    approvalNumber: String,
+                    approvalDate: Date,
+                },
+            ],
+        },
+
+        //  compliance :
+        complianceStatus: {
+            type: String,
+            enum: ["draft", "under_review", "compliant", "non_compliant"],
+            default: "draft",
+        },
+        complianceScore: {
+            type: Number,
+            default: 0,
+        },
+        vectorIndexed: {
+            type: Boolean,
+            default: false,
+        },
+        isActive: {
+            type: Boolean,
+            default: true,
+        },
+        deletedAt: {
+            type: Date,
+            default: null,
+        },
+    },
+    { timestamps: true },
+);
+
+export const Product = mongoose.model("Product", productSchema);
