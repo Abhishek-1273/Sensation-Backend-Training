@@ -1,0 +1,328 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=DM+Mono:wght@300;400;500&family=Outfit:wght@300;400;500&display=swap');
+
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    overflow: hidden;
+}
+
+.co-root {
+    display: flex;
+    background: transparent;
+    font-family: 'Outfit', sans-serif;
+    /* overflow: hidden; */
+}
+
+.co-right {
+    width: 100%;
+    display: flex;
+    align-items: self-start;
+    justify-content: center;
+    background: transparent;
+    overflow-y: auto;
+    position: relative;
+    margin-top: 2rem;
+}
+
+.co-right::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #ffc927, transparent);
+    opacity: .35;
+}
+
+.co-card {
+    background-color: #ffffff;
+    width: 100%;
+    max-width: 520px;
+    border-radius: 1rem;
+    animation: coFadeUp .8s .08s ease both;
+    padding: 2.5rem;
+    border: 1px solid #d1d5db;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.5);
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.co-form-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: .55rem;
+    letter-spacing: .26em;
+    color: #ffc927;
+    text-transform: uppercase;
+    margin-bottom: .5rem;
+}
+
+.co-form-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.9rem;
+    font-weight: 900;
+    color: #1e293b;
+    letter-spacing: .02em;
+}
+
+.co-form-desc {
+    margin-top: .35rem;
+    font-size: .8rem;
+    color: #000000;
+    font-weight: 300;
+}
+
+/* alert */
+.co-alert {
+    padding: .6rem 1rem;
+    font-size: .75rem;
+    font-weight: 300;
+    margin: .8rem 0 .3rem;
+    display: none;
+}
+
+.co-alert.show {
+    display: block;
+}
+
+.co-alert.error {
+    background: rgba(192, 57, 43, .12);
+    border-left: 2px solid #c0392b;
+    color: #c0392b;
+}
+
+.co-alert.success {
+    background: rgba(39, 174, 96, .1);
+    border-left: 2px solid #27ae60;
+    color: #27ae60;
+}
+
+/* steps */
+.co-steps {
+    display: flex;
+    gap: 0;
+    margin: 1.4rem 0 1.2rem;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.co-step {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .3rem;
+    padding: .6rem .3rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    transition: all .2s;
+}
+
+.co-step::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: transparent;
+    transition: background .2s;
+}
+
+.co-step.active::after {
+    background: #ffc927;
+}
+
+.co-step.done::after {
+    background: rgba(255, 201, 39, .35);
+}
+
+.co-step-num {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    border: 1px solid #d1d5db;
+    display: grid;
+    place-items: center;
+    font-family: 'DM Mono', monospace;
+    font-size: .58rem;
+    color: #6e7580;
+    transition: all .2s;
+}
+
+.co-step.active .co-step-num {
+    border-color: #ffc927;
+    color: #ffc927;
+    background: rgba(255, 201, 39, .12);
+}
+
+.co-step.done .co-step-num {
+    border-color: #27ae60;
+    color: #27ae60;
+    background: rgba(39, 174, 96, .1);
+    font-size: .65rem;
+}
+
+.co-step-label {
+    font-family: 'DM Mono', monospace;
+    font-size: .52rem;
+    letter-spacing: .12em;
+    color: #94a3b8;
+    text-transform: uppercase;
+    transition: color .2s;
+}
+
+.co-step.active .co-step-label {
+    color: #ffc927;
+}
+
+.co-step.done .co-step-label {
+    color: #94a3b8;
+}
+
+/* fields */
+.co-fields {
+    display: flex;
+    flex-direction: column;
+    gap: .85rem;
+}
+
+.co-field {
+    display: flex;
+    flex-direction: column;
+    gap: .35rem;
+}
+
+.co-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: .75rem;
+}
+
+.co-label {
+    font-family: 'DM Mono', monospace;
+    font-size: .58rem;
+    letter-spacing: .18em;
+    color: #000000;
+    text-transform: uppercase;
+}
+
+.co-input {
+    width: 100%;
+    padding: .72rem .9rem;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    color: #1e293b;
+    font-family: 'Outfit', sans-serif;
+    font-size: .84rem;
+    font-weight: 300;
+    outline: none;
+    transition: border-color .25s, box-shadow .25s;
+    box-sizing: border-box;
+    border-radius: 0;
+}
+
+.co-input::placeholder {
+    color: rgba(110, 117, 128, .5);
+}
+
+.co-input:focus {
+    border-color: #ffc927;
+    box-shadow: 0 0 0 3px rgba(255, 201, 39, .16), inset 0 0 0 1px rgba(255, 201, 39, .08);
+}
+
+/* navigation */
+.co-nav {
+    display: flex;
+    gap: .75rem;
+    margin-top: .4rem;
+}
+
+.co-btn {
+    flex: 1;
+    padding: .82rem;
+    background: #ffc927;
+    border: none;
+    color: #0c0e10;
+    font-family: 'DM Mono', monospace;
+    font-size: .66rem;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: background .25s, transform .15s;
+}
+
+.co-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .15), transparent);
+    transform: translateX(-100%);
+    transition: transform .5s;
+}
+
+.co-btn:hover {
+    background: #d4aa3a;
+}
+
+.co-btn:hover::before {
+    transform: translateX(100%);
+}
+
+.co-btn:active {
+    transform: scale(.99);
+}
+
+.co-btn:disabled {
+    opacity: .5;
+    cursor: not-allowed;
+}
+
+.co-btn-ghost {
+    padding: .82rem 1.2rem;
+    background: transparent;
+    border: 1px solid #d1d5db;
+    color: #6e7580;
+    font-family: 'DM Mono', monospace;
+    font-size: .66rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: border-color .2s, color .2s;
+}
+
+.co-btn-ghost:hover {
+    border-color: #ffc927;
+    color: #ffc927;
+}
+
+@keyframes coFadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 820px) {
+    .co-row {
+        grid-template-columns: 1fr;
+    }
+
+    .co-right {
+        padding: 2rem 1.5rem;
+    }
+}
