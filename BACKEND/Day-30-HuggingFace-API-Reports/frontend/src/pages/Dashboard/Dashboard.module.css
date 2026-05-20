@@ -1,0 +1,174 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=DM+Mono:wght@300;400;500&family=Outfit:wght@300;400;500&display=swap');
+
+.page {
+    padding: 2rem 2.5rem;
+    font-family: "Averia Libre";
+    min-height: 100vh;
+    transition: all 0.3s ease;
+}
+
+.light {
+    background: #f8fafc;
+    color: #1e293b;
+}
+
+.dark {
+    background: #0f172a;
+    color: #f8fafc;
+}
+
+/* header */
+.header {
+    margin-bottom: 2.5rem;
+}
+
+.header h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem;
+    font-weight: 900;
+    letter-spacing: .02em;
+    margin-bottom: .25rem;
+}
+
+.header p {
+    font-size: .85rem;
+    color: #64748b;
+    font-weight: 300;
+}
+
+.userName {
+    color: #0d9488;
+    font-weight: 600;
+}
+
+.dark .userName {
+    color: #2dd4bf;
+}
+
+/* stats grid — 4 columns for 4 live cards */
+.statsGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+}
+
+/* card */
+.card {
+    padding: 1.75rem;
+    border: 1px solid #e2e8f0;
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    gap: .6rem;
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.dark .card {
+    background: #1e293b;
+    border-color: #334155;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: transparent;
+    transition: background 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(13, 148, 136, .08);
+    border-color: #5eead4;
+}
+
+.card:hover::before {
+    background: #0d9488;
+}
+
+.dark .card:hover {
+    box-shadow: 0 8px 24px rgba(45, 212, 191, .1);
+    border-color: #0d9488;
+}
+
+.dark .card:hover::before {
+    background: #2dd4bf;
+}
+
+/* accent card (compliance score) */
+.accentCard {
+    border-color: #99f6e4;
+    background: #f0fdfa;
+}
+
+.dark .accentCard {
+    background: #0f2723;
+    border-color: #0f766e;
+}
+
+.accentCard::before {
+    background: #0d9488;
+}
+
+.dark .accentCard::before {
+    background: #2dd4bf;
+}
+
+/* card icon */
+.cardIcon {
+    color: #0d9488;
+    display: flex;
+    align-items: center;
+}
+
+.dark .cardIcon {
+    color: #2dd4bf;
+}
+
+/* card value */
+.cardValue {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.8rem;
+    font-weight: 900;
+    line-height: 1;
+    color: inherit;
+}
+
+.accentCard .cardValue {
+    color: #0f766e;
+}
+
+.dark .accentCard .cardValue {
+    color: #5eead4;
+}
+
+/* card label */
+.cardLabel {
+    font-family: 'DM Mono', monospace;
+    font-size: .55rem;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: #64748b;
+    font-weight: 500;
+}
+
+@media (max-width: 1100px) {
+    .statsGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .statsGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .page {
+        padding: 1.5rem;
+    }
+}
